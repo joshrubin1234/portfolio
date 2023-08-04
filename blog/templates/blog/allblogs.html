@@ -93,6 +93,10 @@
       }
     </style>
 
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+
     
   </head>
   <body>
@@ -139,24 +143,25 @@
     </div>
 
     
-<header data-bs-theme="dark">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Joshua Rubin</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ml-auto">
-              <a class="nav-link" href="#">About Me</a>
-              <a class="nav-link" href="#">Resume</a>
-              <a class="nav-link active" href="#">Blog</a>
-              <!-- <a class="nav-link disabled">Disabled</a> -->
+    <header data-bs-theme="dark">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">Joshua Rubin</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav ml-auto">
+              
+                <a class="nav-link" href="{% url 'home' %}">About Me</a>
+                <a class="nav-link" href="{% url 'resume' %}">Resume</a>
+                <a class="nav-link active" href="{% url 'allblogs' %}">Blog</a>
+                <!-- <a class="nav-link disabled">Disabled</a> -->
+              </div>
             </div>
           </div>
-        </div>
-      </nav>
-</header>
+        </nav>
+  </header>
 
 <main>
     <div class="container">
@@ -166,12 +171,17 @@
     <h2>Latest Post</h2>
     <hr>
     {% for blog in blogs.all %}
-    <a href=""><h3>{{ blog.title }}</h3></a> 
-    {{ blog.pub_date }}
+    <a href="{{blog.id}}"><h3>{{ blog.title }}</h3></a> 
+    {{ blog.pub_date_pretty }}
     <br />
-    <img src = "{{ blog.image.url }}"/>
-    {% endfor %}
+    <!-- <p>{{blog.summary}}</p> -->
+    <p>{{blog.summary}}</p>
+    {% if blog.image %}
+    <img src="{{ blog.image.url }}" height="600" width="900" />
+    {% endif %}
+    {% endfor %}    
 </div>
+
 </main>
 
 <footer class="text-body-secondary py-5">

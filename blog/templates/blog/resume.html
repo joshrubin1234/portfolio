@@ -1,15 +1,16 @@
-{% load static %}
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
-  <head><script src="/docs/5.3/assets/js/color-modes.js"></script>
+  <head>
+    <!-- <script src="/docs/5.3/assets/js/color-modes.js"></script> -->
 
     <meta charset="utf-8">
     <title>Album example · Bootstrap v5.3</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
   
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<!-- <link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"> -->
     <!-- Favicons -->
 <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
 <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
@@ -73,24 +74,6 @@
         -webkit-overflow-scrolling: touch;
       }
 
-      .circle {
-        width: 400px;
-        height: 400px;
-        border-radius: 50%;
-        overflow: hidden;
-        position: relative;
-        margin-top: 20px; /* adjust this as necessary to create space */
-        margin-bottom:20px;
-        }
-
-      .circle img {
-        display: inline;
-        margin: 0 auto;
-        height: 100%;
-        width: auto;
-        border-radius:50%;
-        }
-
       .btn-bd-primary {
         --bd-violet-bg: #712cf9;
         --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
@@ -114,7 +97,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-
 
     
   </head>
@@ -162,63 +144,33 @@
     </div>
 
     
-    <header data-bs-theme="dark">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#">Joshua Rubin</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div class="navbar-nav ml-auto">
-              
-                <a class="nav-link active" href="{% url 'home' %}">About Me</a>
-                <a class="nav-link" href="{% url 'resume' %}">Resume</a>
-                <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
-                <!-- <a class="nav-link disabled">Disabled</a> -->
-              </div>
+<header data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Joshua Rubin</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+            
+              <a class="nav-link" href="{% url 'home' %}">About Me</a>
+              <a class="nav-link active" href="{% url 'resume' %}">Resume</a>
+              <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
+              <!-- <a class="nav-link disabled">Disabled</a> -->
             </div>
           </div>
-        </nav>
-  </header>
+        </div>
+      </nav>
+</header>
 
 <main>
-
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <div class="circle mx-auto">
-          <img src="{{ MEDIA_URL }}/media/images/JoshLinkedInCorrected-min.jpg"  alt="Your Image">
-        </div>
-        <h1 class="fw-light">Hi, I'm Josh!</h1>
-        <p class="lead text-body-secondary">My name is Joshua Rubin and I am a passionate fullstack and mobile web devloper. I built this portfolio website in Django to showcase my past work and experience. </p>
-        <p>
-          <a href="mailto:joshrubin2014@gmail.com" class="btn btn-primary my-2">Email Me</a>
-        </p>
-        <br>
-        <h1 class="fw-light">Projects</h1>
-      </div>
-    </div>
-  </section>
-
-  <div class="album py-5 bg-light">
     <div class="container">
+        <h1 class="text-center pt-3">My Resume</h1>    
+        <iframe id="resume" width="100%" height="1000px" src="/static/resume.pdf">
+    
+    </div>
 
-      <div class="row">
-        {% for job in jobs.all %}
-        <div class="col-lg-6 col-md-6 mb-4">
-          <div class="card h-100">
-            <img class="card-img-top" src = "{{job.image.url}}"/>
-            <div class="card-body">
-              <h4 class="card-title">{{ job.title }}</h4>
-              <p class="card-text">{{job.summary}}</p>
-              </div>
-              <div class="card-footer">
-                <a href="{{job.id}}" class="btn btn-primary">Learn More</a>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
 </main>
 
 <footer class="text-body-secondary py-5">
@@ -227,9 +179,7 @@
    </div>
 </footer>
 
-<script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxO
+<!-- <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script> -->
 
     </body>
 </html>

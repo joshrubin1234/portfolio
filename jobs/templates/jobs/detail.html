@@ -184,42 +184,25 @@
 
 <main>
 
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <div class="circle mx-auto">
-          <img src="{{ MEDIA_URL }}/media/images/JoshLinkedInCorrected-min.jpg"  alt="Your Image">
-        </div>
-        <h1 class="fw-light">Hi, I'm Josh!</h1>
-        <p class="lead text-body-secondary">My name is Joshua Rubin and I am a passionate fullstack and mobile web devloper. I built this portfolio website in Django to showcase my past work and experience. </p>
-        <p>
-          <a href="mailto:joshrubin2014@gmail.com" class="btn btn-primary my-2">Email Me</a>
-        </p>
-        <br>
-        <h1 class="fw-light">Projects</h1>
-      </div>
-    </div>
-  </section>
-
-  <div class="album py-5 bg-light">
     <div class="container">
-
-      <div class="row">
-        {% for job in jobs.all %}
-        <div class="col-lg-6 col-md-6 mb-4">
-          <div class="card h-100">
-            <img class="card-img-top" src = "{{job.image.url}}"/>
-            <div class="card-body">
-              <h4 class="card-title">{{ job.title }}</h4>
-              <p class="card-text">{{job.summary}}</p>
-              </div>
-              <div class="card-footer">
-                <a href="{{job.id}}" class="btn btn-primary">Learn More</a>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
+        <br /> 
+        <br />
+        <hr>
+        <p style="font-weight: bold; font-size: 2em;">{{job.summary}}</p>  
+        <br />
+        {% if job.video %}
+        <video width="900" height="600" controls>
+            <source src="{{ job.video.url }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        {% endif %}
+        {% if job.image %}
+        <img src="{{ job.image.url }}" height="600" width="900" />
+        {% endif %}   
+    </div>
 </main>
+
+
 
 <footer class="text-body-secondary py-5">
   <div class="container text-center">
