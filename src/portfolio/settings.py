@@ -23,8 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-b_-i55l9b06wnzv7z)bi%^6c5&0#b##74adww4!k-lixx=#ypd'
-
+# SECRET_KEY = 'django-insecure-b_-i55l9b06wnzv7z)bi%^6c5&0#b##74adww4!k-lixx=#ypd'
+SECRET_KEY="django-insecure-+545(f&^hg0oao&yj1=_vtxfx)a$d85^2lg43n%&+_w47y)v!"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -82,6 +82,34 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'portfolio',
+#         'USER': 'user',
+#         'PASSWORD': 'rootuser',
+#         'HOST': 'postgresql-139346-0.cloudclusters.net',
+#         'PORT':'18400',
+#     }
+# }
+
+from django.db.backends.postgresql import base as postgres_base
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Portfolio',
+        'USER': 'user',
+        'PASSWORD': 'rootuser',
+        'HOST': 'postgresql-139346-0.cloudclusters.net',  # Usually 'localhost' or '127.0.0.1'
+        'PORT': '18400',  # Usually '5432'
+    }
+}
+
+
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
 #         'NAME': 'portfoliodb',
 #         'USER': 'postgres',
 #         'PASSWORD': 'Pencil123$',
@@ -89,14 +117,37 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 #         'PORT':'5432',
 #     }
 # }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'postgres',
+#         'USER': 'postgres',
+#         'PASSWORD': 'postgres',
+#         'HOST': 'pgdb',
+#         'PORT':'5432',
+#     }
+# }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+default_db_url = 'postgresql://user:rootuser@postgresql-139346-0.cloudclusters.net:18400/Portfolio'
+# default_db_url = 'postgresql://postgres:postgres@pgdb:5432/postgres'
+
+# Use the value from the DATABASE_URL environment variable if available, or use the default
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL', default_db_url))
 }
 
-DATABASES['default'] = dj_database_url.config()
+
+# DATABASES['default'] = dj_database_url.config(default='postgresql-139346-0.cloudclusters.net')
+# DATABASES = {
+#     'default': dj_database_url.config(default='postgresql-139346-0.cloudclusters.net')
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -148,3 +199,4 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+REDIS_ENDPOINT_URI='redis://redis:6379/'
